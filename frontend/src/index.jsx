@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { configureStore, createReducer } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,7 +10,7 @@ import App from './App';
 // REDUX TOOLKIT
 import eventsReducer, { fetchEvents } from '../src/components/features/FeaturedEvents/eventsSlice';
 import { eventsApi } from './components/features/FeaturedEvents/eventsApi';
-import cartReducer from './components/features/cartSlice';	
+import cartReducer, { getTotals } from './components/features/cartSlice';	
 // Adding reducers to the store
 const store = configureStore({
   reducer: {
@@ -24,6 +24,7 @@ const store = configureStore({
 });
 
 store.dispatch(fetchEvents());
+store.dispatch(getTotals());
 
 const root = createRoot(document.getElementById('root'));
 root.render(

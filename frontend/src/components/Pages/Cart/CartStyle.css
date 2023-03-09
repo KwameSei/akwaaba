@@ -157,3 +157,11 @@ button .button-sign {
     position: 50%;
     align-items: center;
 }
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+}

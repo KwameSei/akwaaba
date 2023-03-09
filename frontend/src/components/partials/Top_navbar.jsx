@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import './Top-nav.css'
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
@@ -10,6 +11,8 @@ import { FaCartArrowDown } from "react-icons/fa";
 // import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 export const NavBar = () => {
+  const {cartTotalQuantity} = useSelector(state => state.cart);
+
     return (
       <nav className="nav-bar">
         <Link to='/' className="link">
@@ -28,7 +31,7 @@ export const NavBar = () => {
         </Link>
         <Link to='/cart' className="link">
           <div className="nav"><FaCartArrowDown className="icon" />
-            <span className="cart-quantity">3</span>
+            <span className="cart-quantity">{cartTotalQuantity}</span>
           </div>
         </Link>
           <div className="nav logout"><FaSignOutAlt className="icon" />Log Out</div>
