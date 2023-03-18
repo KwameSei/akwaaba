@@ -1,0 +1,8 @@
+.users-main {
+    margin-top: 4%;
+    justify-content: space-between;
+}
+.users-content {
+    margin: 40px 0 0 0;
+    height: 75vh;
+}

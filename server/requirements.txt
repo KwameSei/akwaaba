@@ -8,3 +8,7 @@ python-dotenv
 flask-JWT-Extended
 flask-uploads
 cloudinary
+flask-security
+email-validator
+python-decouple
+flask_migrate

@@ -7,11 +7,9 @@ from flask import jsonify, json, make_response, request
 from models.engine.database import Session
 from models.event import All_Event
 from models.user import User
-#from models.models import User, All_Event
-from typing import List
 import os
 from dotenv import load_dotenv
-load_dotenv()
+from api.v1.routes.token import token_required
 import time
 from werkzeug.utils import secure_filename
 
@@ -27,6 +25,7 @@ cloudinary.config(
     api_secret = os.environ.get('CLOUDINARY_API_SECRET')
 )
 
+load_dotenv()
 db=Session()
 
 @views.route('/status', methods=['GET'], strict_slashes=False)
@@ -65,7 +64,12 @@ def get_one_event(event_id:int):
 # UPLOAD_FOLDER = 'uploads'
 
 @views.route('/create_event', methods=["POST"], strict_slashes=False)
-def create_event():
+@token_required
+def create_event(current_user):
+    """Create a new event"""
+
+    if not current_user.is_admin:
+        return jsonify({'error': 'Not authorized to perform this action'})
 
     # # Check if featuredImage field is present
     # if 'featuredImage' not in request.files:
@@ -129,13 +133,6 @@ def create_event():
         else:
             views = 0
 
-        # # # Upload image to cloudinary
-        # # featuredImage = None
-        # # if image:
-        # #     upload_result = cloudinary.uploader.upload(image, folder='events', use_filename=True, unique_filename=False)
-        # #     featuredImage = upload_result['secure_url']
-        # result = cloudinary.uploader.upload(file.file)
-        # featuredImage = result.get('url')
         event_dict = "Worked"
         if (featuredImage):
             # Upload image to cloudinary
@@ -181,10 +178,17 @@ def create_event():
 
 # Updating events
 @views.route('/event/{event_id}', methods=["PUT"], strict_slashes=False)
-def update_one_event(event_id:int):
+@token_required
+def update_one_event(current_user, event_id:int):
+
+    if not current_user.is_admin:
+        return jsonify({'error': 'Not authorized to perform this action'})
     pass
 
 # Deleting events
 @views.route('/event/{event_id}', methods=["DELETE"], strict_slashes=False)
-def delete_one_event(event_id:int):
+def delete_one_event(current_user, event_id:int):
+
+    if not current_user.is_admin:
+        return jsonify({'error': 'Not authorized to perform this action'})
     pass

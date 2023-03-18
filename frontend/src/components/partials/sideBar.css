@@ -1,0 +1,20 @@
+.sidebar-main {
+    position: fixed;
+    height: calc(100vh - 60px); /* set the height of the sidebar */
+    overflow-y: scroll; /* add a vertical scrollbar */
+    scrollbar-width: thin; /* set the width of the scrollbar */
+    scrollbar-color: #ccc #fff; /* set the color of the scrollbar */
+}
+/* style the scrollbar track */
+.sidebar-main::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+  
+/* style the scrollbar thumb */
+.sidebar-main::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+.menu-item {
+}
+

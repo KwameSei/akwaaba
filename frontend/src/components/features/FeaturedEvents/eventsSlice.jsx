@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { setHeaders } from '../../../slices/api';
 // import { toast } from 'react-toastify';
 
 // Creating a reducer
@@ -23,19 +24,22 @@ export const fetchEvents = createAsyncThunk(
             return rejectWithValue(err.message);
         }
     });
-
-const accessToken = 'nathaniel';
+    
 
 export const createEvents = createAsyncThunk(
     'events/createEvents', 
     async (values) => {
         try {
-            const response = await axios.post('/api/v1/create_event', values, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${accessToken}`
-                  }
-            });
+            const response = await axios.post('/api/v1/create_event',
+                values,
+                setHeaders()
+            //      {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data',
+            //         'Authorization': `Bearer ${accessToken}`
+            //       }
+            // }
+            );
             const data = await response.json();
             return data;
         }

@@ -1,0 +1,10 @@
+.side-calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 0;
+  background-color: #ffaf3fac;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(245, 242, 242, 0.931);
+}

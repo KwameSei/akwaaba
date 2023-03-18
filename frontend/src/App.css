@@ -4,6 +4,34 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root,
+.App,
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+/* .App {
+  display: flex;
+  position: relative;
+} */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-track:hover {
+  background: #555;
+}
+
 /* Not Found Page */
 .not-found {
   display: flex;

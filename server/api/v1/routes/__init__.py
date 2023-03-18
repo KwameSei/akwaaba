@@ -7,3 +7,5 @@ views = Blueprint('views', __name__, url_prefix='/api/v1')
 from api.v1.routes.index import *
 from api.v1.routes.images import *
 from api.v1.routes.users import *
+from api.v1.routes.auth import *
+from api.v1.routes.token import *
